@@ -1,7 +1,9 @@
-from pydantic import BaseModel
-class Item(BaseModel):
-    id: int
-    name: str
-    description: str
-    price: float
-    is_offer: bool = None
+from sqlalchemy import Column, Integer, String
+from app1.database import Base
+
+class Item(Base):
+    __tablename__ = 'items'
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    description = Column(String, index=True)
